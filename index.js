@@ -32,7 +32,7 @@ app.put('/api/todolist/:id', function(req,res) {
         const done = req.body.done
 
     if(text == ''){
-        res.status(400).send('update ignore')
+        res.status(400).send('error: update ignore')
             
     } else {
         data[id]= {
@@ -42,7 +42,7 @@ app.put('/api/todolist/:id', function(req,res) {
         res.send('data updated')
         return;
     }
-    
+
     }
     
 });
@@ -54,14 +54,14 @@ app.delete('/api/todolist/:id', function(req,res) {
     const id = req.params.id
     if(id in data ) {
     delete data[id]
-    res.send('data deleted')
+    res.send('data has been deleted')
     }
     res.status(400).send('Error');
 });
 
 
 // GET
-app.get('/api/todolist', function(req, res){
+app.get('/api/todolist',  function(req, res){
     res.send(data)
 })
 
